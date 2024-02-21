@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import environ
 
@@ -83,15 +84,13 @@ WSGI_APPLICATION = "bookgarden.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DATABASE_NAME"),
-        "USER": env("DATABASE_USER"),
-        "PASSWORD": env("DATABASE_PASS"),
-        "HOST": env("DATABASE_host"),
-        "PORT": env("DATABASE_port"),
-    }
+    "default": dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default="postgres://django_project_88ot_user:VYFbK62bQFaWdXSo35ERmZRPZBWscaAE@dpg-cnae31mn7f5s73fp5q2g-a.oregon-postgres.render.com/django_project_88ot",
+    )
 }
 
 # postgres://django_project_88ot_user:VYFbK62bQFaWdXSo35ERmZRPZBWscaAE@dpg-cnae31mn7f5s73fp5q2g-a.oregon-postgres.render.com/django_project_88ot
